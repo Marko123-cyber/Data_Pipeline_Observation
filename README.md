@@ -1,9 +1,13 @@
 Data Pipeline Observability System
 A MySQL database project that tracks and monitors data pipelines - logging runs, layers, data quality checks, failures, and automated alerts. Built to demonstrate real-world database engineering: schema design, normalization, triggers, stored procedures, views, and testing.
 
+
+
 What the Project Is
 Modern data teams run dozens of pipelines daily. When something breaks — a timeout, a bad schema, a null explosion — you need to know immediately: which pipeline failed, at which layer, how severe it was, and whether anyone was notified.
 This database system answers those questions by storing the full lifecycle of every pipeline run, from start to finish, including automated business logic enforced directly at the database level.
+
+
 
 Project Structure
 Data_Pipeline_Observation/
@@ -17,7 +21,14 @@ Data_Pipeline_Observation/
 └── erd.png                                      ← Entity-Relationship Diagram
 
 ERD Diagram
+
+
+
+
+
 ![ERD Diagram](./erd.png)
+
+
 
 
 
