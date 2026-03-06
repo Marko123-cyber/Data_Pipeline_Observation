@@ -1,13 +1,9 @@
 Data Pipeline Observability System
 A MySQL database project that tracks and monitors data pipelines - logging runs, layers, data quality checks, failures, and automated alerts. Built to demonstrate real-world database engineering: schema design, normalization, triggers, stored procedures, views, and testing.
 
-
-
 What the Project Is
-Modern data teams run dozens of pipelines daily. When something breaks — a timeout, a bad schema, a null explosion — you need to know immediately: which pipeline failed, at which layer, how severe it was, and whether anyone was notified.
+Modern data teams run dozens of pipelines daily. When something breaks - a timeout, a bad schema, a null explosion - you need to know immediately: which pipeline failed, at which layer, how severe it was, and whether anyone was notified.
 This database system answers those questions by storing the full lifecycle of every pipeline run, from start to finish, including automated business logic enforced directly at the database level.
-
-
 
 Project Structure
 Data_Pipeline_Observation/
@@ -25,9 +21,7 @@ ERD Diagram
 
 
 
-
 ![ERD Diagram](./erd.png)
-
 
 
 
@@ -39,20 +33,20 @@ Description
 Pipeline
 Registered pipelines with source type and active status
 Pipeline_run
-Each execution of a pipeline — start, finish, status, rows written
+Each execution of a pipeline - start, finish, status, rows written
 Layer
 Bronze / Silver / Gold layer tracking per run
 Data_Quality_Check
-Validation checks run against data — null checks, volume checks, schema checks
+Validation checks run against data - null checks, volume checks, schema checks
 Failure
-Errors that occurred during a run — message, code, severity
+Errors that occurred during a run - message, code, severity
 Alert
-Notifications sent when failures occur — channel and timestamp
+Notifications sent when failures occur - channel and timestamp
 
 Triggers
 1. duration_setting_after_pipeline_finished
 BEFORE UPDATE on Pipeline_run
-Automatically calculates DurationSec when FinishedAt is set. No manual math required — the database computes it using TIMESTAMPDIFF(SECOND, StartedAt, FinishedAt).
+Automatically calculates DurationSec when FinishedAt is set. No manual math required - the database computes it using TIMESTAMPDIFF(SECOND, StartedAt, FinishedAt).
 2. set_status_completed
 AFTER UPDATE on Layer
 When a layer is marked as completed, checks whether all layers for that run are now completed. If yes, automatically updates the parent Pipeline_run status to completed. Keeps run status always in sync with its layers.
@@ -118,4 +112,3 @@ Key Concepts Demonstrated
     • CREATE OR REPLACE VIEW with multi-table joins and live calculations 
     • COALESCE for NULL-safe aggregations 
     • CASE WHEN inside views for derived boolean flags 
-
