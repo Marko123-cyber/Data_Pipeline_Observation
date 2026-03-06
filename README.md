@@ -83,8 +83,7 @@ Prerequisites
     • MySQL Workbench (optional but recommended) 
 Steps
     1. Clone the repository: 
-git clone https://github.com/yourusername/data-pipeline-observability.git
-cd data-pipeline-observability
+git clone https://github.com/Marko123-cyber/Data_Pipeline_Observation
     2. Open MySQL Workbench and connect to your local server, or use the CLI: 
 mysql -u root -p
     3. Run the scripts in this exact order: 
