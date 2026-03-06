@@ -1,10 +1,10 @@
 # Data Pipeline Observability System
 
-A MySQL database project that tracks and monitors data pipelines—logging runs, layers, data quality checks, failures, and automated alerts. Built to demonstrate real-world database engineering: schema design, normalization, triggers, stored procedures, views, and testing.
+A MySQL database project that tracks and monitors data pipelines-logging runs, layers, data quality checks, failures, and automated alerts. Built to demonstrate real-world database engineering: schema design, normalization, triggers, stored procedures, views, and testing.
 
 ## What the Project Is
 
-Modern data teams run dozens of pipelines daily. When something breaks—a timeout, a bad schema, a null explosion—you need to know immediately: which pipeline failed, at which layer, how severe it was, and whether anyone was notified.
+Modern data teams run dozens of pipelines daily. When something breaks-a timeout, a bad schema, a null explosion-you need to know immediately: which pipeline failed, at which layer, how severe it was, and whether anyone was notified.
 
 This database system answers those questions by storing the full lifecycle of every pipeline run, from start to finish, including automated business logic enforced directly at the database level.
 
@@ -31,17 +31,17 @@ Data_Pipeline_Observation/
 | Table | Description |
 |-------|-------------|
 | Pipeline | Registered pipelines with source type and active status |
-| Pipeline_run | Each execution of a pipeline—start, finish, status, rows written |
+| Pipeline_run | Each execution of a pipeline-start, finish, status, rows written |
 | Layer | Bronze / Silver / Gold layer tracking per run |
-| Data_Quality_Check | Validation checks run against data—null checks, volume checks, schema checks |
-| Failure | Errors that occurred during a run—message, code, severity |
-| Alert | Notifications sent when failures occur—channel and timestamp |
+| Data_Quality_Check | Validation checks run against data-null checks, volume checks, schema checks |
+| Failure | Errors that occurred during a run-message, code, severity |
+| Alert | Notifications sent when failures occur-channel and timestamp |
 
 ## Triggers
 
 ### 1. `duration_setting_after_pipeline_finished`
 - **Timing:** BEFORE UPDATE on Pipeline_run
-- **Purpose:** Automatically calculates `DurationSec` when `FinishedAt` is set. No manual math required—the database computes it using `TIMESTAMPDIFF(SECOND, StartedAt, FinishedAt)`.
+- **Purpose:** Automatically calculates `DurationSec` when `FinishedAt` is set. No manual math required-the database computes it using `TIMESTAMPDIFF(SECOND, StartedAt, FinishedAt)`.
 
 ### 2. `set_status_completed`
 - **Timing:** AFTER UPDATE on Layer
